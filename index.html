@@ -1,7 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/x-icon"
+    href="https://raw.githubusercontent.com/CrazyMeowl/NetCentric-PokeProject/main/poke.ico">
+  <title>Test Website</title>
+
+  <!-- OWL CAROUSEL -->
+  <link rel="stylesheet" href="./css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="./css/owl.theme.default.min.css" />
+  <!-- BOOTSTRAP 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- FONT GOOGLE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,700&display=swap"
+    rel="stylesheet" />
+  <!-- ANIMATE -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="./css/main.css" />
+
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>CrazyMeowl's Info</p>
+  <!-- HEADER -->
+  <header>
+    <div class="header__content" id="home">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img class="logo--icon" src="./img/pokeball.png" alt="icon" />
+            <img class="logo--name" src="./img/logo.png" alt="poke" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <i class="fa fa-bars"></i>
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/searchPage.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.pokemon.com/us/pokemon-news/">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">About Us</a>
+              </li>
+            </ul>
+            <div class="cart__logo">
+              <a href="/cartDetail.html" title="Open your cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="banner__content">
+      <div class="banner__overlay"></div>
+      <!-- <img src="./img/vid.gif"> -->
+      <div class="banner__items">
+        <div class="banner__title animate__animated animate__fadeInTopRight">
+          <h2>Welcome to our shop !</h2>
+          <p>Find our newest and lastest pokemon card</p>
+        </div>
+        <div class="banner__button">
+          <a href="./searchPage.html">
+            <button type="button" class="custom-btn btn-7 animate__animated animate__fadeInBottomLeft ">BUY NOW</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <section class="top__footer" >
+      <div class="container">
+        <div class="content">
+          <p>Visit Other Social Channels</p>
+        </div>
+        <div class="icon">
+          <div class="list__snw">
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f" id="facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram" id="instagram"></i></a>
+            <a href="https://www.twitch.tv/tan_vo"><i class="fa-brands fa-twitch" id="twitch"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin-in" id="linkedin"></i></a>
+            <a href="https://github.com/TranDinhKhoiNguyen512/Commercial-Web-App"><i class="fa-brands fa-github"
+                id="github"></i></a>
+            <a href="https://www.youtube.com/watch?v=sFS6gLmPX3w"><i class="fa-brands fa-youtube" id="youtube"></i></a>
+            <a href="https://discord.com/"><i class="fa-brands fa-discord" id="discord"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bot__footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-xl-3 logo">
+            <img class="logo--name" src="./img/logo.png" alt="poke" />
+          </div>
+          <div class="col-12 col-md-6 col-xl-3 first__content">
+            <div class="title">
+              <h2>The Offcial Websites</h2>
+            </div>
+            <div class="web__link">
+              <a href="https://www.pokemon.com/us/">The Offical Pokémon Website</a><br>
+              <a href="https://pokedex.org/">Pokedex</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3 contact">
+            <div class="tilte">
+              <h2>Contact</h2>
+            </div>
+            <div class="each__member">
+              <a href="https://github.com/TranDinhKhoiNguyen512">Trần Đình Khôi Nguyên - ITITIU19166</a><br>
+              <a href="https://github.com/CrazyMeowl">Trần Cao Bảo Phúc - ITITIU19185</a><br>
+              <a href="https://github.com/growsel">Võ Vương Nhật Tân - ITITIU19205</a>
+            </div>
+          </div>
+          <div class="col logo__e">
+            <img src="https://www.esrb.org/wp-content/uploads/2019/05/E.svg" alt="Logo_e">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </footer>
+
+  <!-- Pop Up -->
+  <section class="pop__up">
+
+
+  </section>
+
+  <!-- JQUERY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- JS BOOTSTRAP5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- OWL CAROUSEl -->
+  <script src="./js/owl.carousel.min.js"></script>
+  <script>
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        600: {
+          items: 3,
+        },
+        1000: {
+          items: 5,
+        },
+      },
+    });
+  </script>
+
+  <!-- MAIN JS -->
+  
+  
+  <script src="./js/cart.js"></script>
+  
+  
+  <script src="./js/main.js"></script>
+  <script>
+      initCart()
+  </script>
 </body>
+
 </html>
