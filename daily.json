@@ -1,0 +1,186 @@
+{
+  "Headline": {
+    "EffectiveDate": "2022-10-19T13:00:00+07:00",
+    "EffectiveEpochDate": 1666159200,
+    "Severity": 3,
+    "Text": "Mưa và mưa dông từ chiều Thứ Tư đến cuối đêm Thứ Tư",
+    "Category": "thunderstorm",
+    "EndDate": "2022-10-20T07:00:00+07:00",
+    "EndEpochDate": 1666224000,
+    "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?unit=c",
+    "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?unit=c"
+  },
+  "DailyForecasts": [
+    {
+      "Date": "2022-10-19T07:00:00+07:00",
+      "EpochDate": 1666137600,
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.1,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 27.9,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Heavy"
+      },
+      "Night": {
+        "Icon": 18,
+        "IconPhrase": "Mưa",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=1&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=1&unit=c"
+    },
+    {
+      "Date": "2022-10-20T07:00:00+07:00",
+      "EpochDate": 1666224000,
+      "Temperature": {
+        "Minimum": {
+          "Value": 23.8,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 30.3,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Heavy"
+      },
+      "Night": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=2&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=2&unit=c"
+    },
+    {
+      "Date": "2022-10-21T07:00:00+07:00",
+      "EpochDate": 1666310400,
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.1,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 31,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 15,
+        "IconPhrase": "Mưa dông",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Heavy"
+      },
+      "Night": {
+        "Icon": 38,
+        "IconPhrase": "Nhiều mây",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c"
+    },
+    {
+      "Date": "2022-10-22T07:00:00+07:00",
+      "EpochDate": 1666396800,
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.2,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 32.4,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 35,
+        "IconPhrase": "Ít mây",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c"
+    },
+    {
+      "Date": "2022-10-23T07:00:00+07:00",
+      "EpochDate": 1666483200,
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.3,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 31.6,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 15,
+        "IconPhrase": "Mưa dông",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=5&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=5&unit=c"
+    }
+  ]
+}
