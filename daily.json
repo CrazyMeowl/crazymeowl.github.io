@@ -1,44 +1,270 @@
 {
   "Headline": {
-    "EffectiveDate": "2022-10-19T13:00:00+07:00",
-    "EffectiveEpochDate": 1666159200,
-    "Severity": 3,
-    "Text": "Mưa và mưa dông từ chiều Thứ Tư đến cuối đêm Thứ Tư",
-    "Category": "thunderstorm",
-    "EndDate": "2022-10-20T07:00:00+07:00",
-    "EndEpochDate": 1666224000,
+    "EffectiveDate": "2022-10-20T13:00:00+07:00",
+    "EffectiveEpochDate": 1666245600,
+    "Severity": 5,
+    "Text": "Dự kiến thời tiết mưa rào từ chiều Thứ Năm đến cuối đêm Thứ Năm",
+    "Category": "rain",
+    "EndDate": "2022-10-21T07:00:00+07:00",
+    "EndEpochDate": 1666310400,
     "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?unit=c",
     "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?unit=c"
   },
   "DailyForecasts": [
     {
-      "Date": "2022-10-19T07:00:00+07:00",
-      "EpochDate": 1666137600,
+      "Date": "2022-10-20T07:00:00+07:00",
+      "EpochDate": 1666224000,
+      "Sun": {
+        "Rise": "2022-10-20T05:43:00+07:00",
+        "EpochRise": 1666219380,
+        "Set": "2022-10-20T17:34:00+07:00",
+        "EpochSet": 1666262040
+      },
+      "Moon": {
+        "Rise": "2022-10-20T01:17:00+07:00",
+        "EpochRise": 1666203420,
+        "Set": "2022-10-20T14:09:00+07:00",
+        "EpochSet": 1666249740,
+        "Phase": "WaningCrescent",
+        "Age": 24
+      },
       "Temperature": {
         "Minimum": {
-          "Value": 24.1,
+          "Value": 24.2,
           "Unit": "C",
           "UnitType": 17
         },
         "Maximum": {
-          "Value": 27.9,
+          "Value": 28.9,
           "Unit": "C",
           "UnitType": 17
         }
       },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 27.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 34.9,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 27.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 33.3,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "HoursOfSun": 2,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 9,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 3,
+          "Category": "Trung bình",
+          "CategoryValue": 2
+        }
+      ],
       "Day": {
         "Icon": 12,
         "IconPhrase": "Mưa rào",
         "HasPrecipitation": true,
         "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Heavy"
+        "PrecipitationIntensity": "Heavy",
+        "ShortPhrase": "Cơn mưa rào to",
+        "LongPhrase": "Cơn mưa rào to",
+        "PrecipitationProbability": 91,
+        "ThunderstormProbability": 26,
+        "RainProbability": 91,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 11.1,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 131,
+            "Localized": "ĐN",
+            "English": "SE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 24.1,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 115,
+            "Localized": "ĐĐN",
+            "English": "ESE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 2.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 2.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 3.5,
+        "HoursOfRain": 3.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 92,
+        "Evapotranspiration": {
+          "Value": 2,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 2606.7,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
       },
       "Night": {
-        "Icon": 18,
-        "IconPhrase": "Mưa",
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
         "HasPrecipitation": true,
         "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Moderate"
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Một hai cơn mưa rào ngắn",
+        "LongPhrase": "Một hai cơn mưa rào ngắn",
+        "PrecipitationProbability": 80,
+        "ThunderstormProbability": 23,
+        "RainProbability": 80,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 7.4,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 116,
+            "Localized": "ĐĐN",
+            "English": "ESE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 22.2,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 128,
+            "Localized": "ĐN",
+            "English": "SE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 1.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 1.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2,
+        "HoursOfRain": 2,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 93,
+        "Evapotranspiration": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 24.8,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
       },
       "Sources": [
         "AccuWeather"
@@ -47,33 +273,257 @@
       "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=1&unit=c"
     },
     {
-      "Date": "2022-10-20T07:00:00+07:00",
-      "EpochDate": 1666224000,
+      "Date": "2022-10-21T07:00:00+07:00",
+      "EpochDate": 1666310400,
+      "Sun": {
+        "Rise": "2022-10-21T05:43:00+07:00",
+        "EpochRise": 1666305780,
+        "Set": "2022-10-21T17:33:00+07:00",
+        "EpochSet": 1666348380
+      },
+      "Moon": {
+        "Rise": "2022-10-21T02:06:00+07:00",
+        "EpochRise": 1666292760,
+        "Set": "2022-10-21T14:49:00+07:00",
+        "EpochSet": 1666338540,
+        "Phase": "WaningCrescent",
+        "Age": 25
+      },
       "Temperature": {
         "Minimum": {
-          "Value": 23.8,
+          "Value": 23.7,
           "Unit": "C",
           "UnitType": 17
         },
         "Maximum": {
-          "Value": 30.3,
+          "Value": 31.4,
           "Unit": "C",
           "UnitType": 17
         }
       },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 27.3,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 37.3,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 27.3,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 35,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "HoursOfSun": 2.5,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 10,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 5,
+          "Category": "Trung bình",
+          "CategoryValue": 2
+        }
+      ],
       "Day": {
-        "Icon": 12,
-        "IconPhrase": "Mưa rào",
+        "Icon": 15,
+        "IconPhrase": "Mưa dông",
         "HasPrecipitation": true,
         "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Heavy"
+        "PrecipitationIntensity": "Heavy",
+        "ShortPhrase": "Một vài cơn mưa dông",
+        "LongPhrase": "Một vài cơn mưa dông",
+        "PrecipitationProbability": 88,
+        "ThunderstormProbability": 53,
+        "RainProbability": 88,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 9.3,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 61,
+            "Localized": "ĐĐB",
+            "English": "ENE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 25.9,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 31,
+            "Localized": "BĐB",
+            "English": "NNE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 16,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 16,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2,
+        "HoursOfRain": 2,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 77,
+        "Evapotranspiration": {
+          "Value": 2.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 2843.8,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
       },
       "Night": {
-        "Icon": 12,
-        "IconPhrase": "Mưa rào",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
+        "Icon": 38,
+        "IconPhrase": "Nhiều mây",
+        "HasPrecipitation": false,
+        "ShortPhrase": "Mây ngày càng nhiều",
+        "LongPhrase": "Mây ngày càng nhiều",
+        "PrecipitationProbability": 25,
+        "ThunderstormProbability": 6,
+        "RainProbability": 25,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 7.4,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 107,
+            "Localized": "ĐĐN",
+            "English": "ESE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 18.5,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 139,
+            "Localized": "ĐN",
+            "English": "SE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 0,
+        "HoursOfRain": 0,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 86,
+        "Evapotranspiration": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 14.5,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
       },
       "Sources": [
         "AccuWeather"
@@ -82,11 +532,545 @@
       "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=2&unit=c"
     },
     {
-      "Date": "2022-10-21T07:00:00+07:00",
-      "EpochDate": 1666310400,
+      "Date": "2022-10-22T07:00:00+07:00",
+      "EpochDate": 1666396800,
+      "Sun": {
+        "Rise": "2022-10-22T05:43:00+07:00",
+        "EpochRise": 1666392180,
+        "Set": "2022-10-22T17:33:00+07:00",
+        "EpochSet": 1666434780
+      },
+      "Moon": {
+        "Rise": "2022-10-22T02:54:00+07:00",
+        "EpochRise": 1666382040,
+        "Set": "2022-10-22T15:29:00+07:00",
+        "EpochSet": 1666427340,
+        "Phase": "WaningCrescent",
+        "Age": 26
+      },
       "Temperature": {
         "Minimum": {
-          "Value": 24.1,
+          "Value": 24.4,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 31.7,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 28.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 37.2,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 28.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 35.4,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "HoursOfSun": 1.4,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 10,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 5,
+          "Category": "Trung bình",
+          "CategoryValue": 2
+        }
+      ],
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Một vài cơn mưa rào",
+        "LongPhrase": "Một vài cơn mưa rào",
+        "PrecipitationProbability": 85,
+        "ThunderstormProbability": 17,
+        "RainProbability": 85,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 9.3,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 336,
+            "Localized": "BTB",
+            "English": "NNW"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 22.2,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 309,
+            "Localized": "TB",
+            "English": "NW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 2.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 2.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 1.5,
+        "HoursOfRain": 1.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 94,
+        "Evapotranspiration": {
+          "Value": 2.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 2471,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
+      },
+      "Night": {
+        "Icon": 35,
+        "IconPhrase": "Ít mây",
+        "HasPrecipitation": false,
+        "ShortPhrase": "Ít mây",
+        "LongPhrase": "Ít mây",
+        "PrecipitationProbability": 25,
+        "ThunderstormProbability": 5,
+        "RainProbability": 25,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 7.4,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 213,
+            "Localized": "NTN",
+            "English": "SSW"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 16.7,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 265,
+            "Localized": "T",
+            "English": "W"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 0,
+        "HoursOfRain": 0,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 99,
+        "Evapotranspiration": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 14.8,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c"
+    },
+    {
+      "Date": "2022-10-23T07:00:00+07:00",
+      "EpochDate": 1666483200,
+      "Sun": {
+        "Rise": "2022-10-23T05:43:00+07:00",
+        "EpochRise": 1666478580,
+        "Set": "2022-10-23T17:32:00+07:00",
+        "EpochSet": 1666521120
+      },
+      "Moon": {
+        "Rise": "2022-10-23T03:42:00+07:00",
+        "EpochRise": 1666471320,
+        "Set": "2022-10-23T16:07:00+07:00",
+        "EpochSet": 1666516020,
+        "Phase": "WaningCrescent",
+        "Age": 27
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.5,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 32,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 28.2,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 36.9,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 28.2,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 35.4,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "HoursOfSun": 0.9,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 10,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 3,
+          "Category": "Trung bình",
+          "CategoryValue": 2
+        }
+      ],
+      "Day": {
+        "Icon": 15,
+        "IconPhrase": "Mưa dông",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Một vài cơn mưa dông",
+        "LongPhrase": "Một vài cơn mưa dông",
+        "PrecipitationProbability": 79,
+        "ThunderstormProbability": 47,
+        "RainProbability": 79,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 9.3,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 239,
+            "Localized": "TTN",
+            "English": "WSW"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 22.2,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 227,
+            "Localized": "TN",
+            "English": "SW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 8.8,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 8.8,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2.5,
+        "HoursOfRain": 2.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 99,
+        "Evapotranspiration": {
+          "Value": 2,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 2201.2,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
+      },
+      "Night": {
+        "Icon": 12,
+        "IconPhrase": "Mưa rào",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate",
+        "ShortPhrase": "Thỉnh thoảng có mưa và mưa dông",
+        "LongPhrase": "Thỉnh thoảng có mưa và mưa dông",
+        "PrecipitationProbability": 61,
+        "ThunderstormProbability": 20,
+        "RainProbability": 61,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 7.4,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 237,
+            "Localized": "TTN",
+            "English": "WSW"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 16.7,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 206,
+            "Localized": "NTN",
+            "English": "SSW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2,
+        "HoursOfRain": 2,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 99,
+        "Evapotranspiration": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 14.8,
+          "Unit": "W/m²",
+          "UnitType": 33
+        }
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c"
+    },
+    {
+      "Date": "2022-10-24T07:00:00+07:00",
+      "EpochDate": 1666569600,
+      "Sun": {
+        "Rise": "2022-10-24T05:43:00+07:00",
+        "EpochRise": 1666564980,
+        "Set": "2022-10-24T17:32:00+07:00",
+        "EpochSet": 1666607520
+      },
+      "Moon": {
+        "Rise": "2022-10-24T04:31:00+07:00",
+        "EpochRise": 1666560660,
+        "Set": "2022-10-24T16:47:00+07:00",
+        "EpochSet": 1666604820,
+        "Phase": "WaningCrescent",
+        "Age": 29
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.5,
           "Unit": "C",
           "UnitType": 17
         },
@@ -96,85 +1080,231 @@
           "UnitType": 17
         }
       },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 28.1,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 38,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất nóng"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 28.1,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 35.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng"
+        }
+      },
+      "HoursOfSun": 1.7,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 10,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 4,
+          "Category": "Trung bình",
+          "CategoryValue": 2
+        }
+      ],
       "Day": {
         "Icon": 15,
         "IconPhrase": "Mưa dông",
         "HasPrecipitation": true,
         "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Heavy"
-      },
-      "Night": {
-        "Icon": 38,
-        "IconPhrase": "Nhiều mây",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
-      ],
-      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c",
-      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=3&unit=c"
-    },
-    {
-      "Date": "2022-10-22T07:00:00+07:00",
-      "EpochDate": 1666396800,
-      "Temperature": {
-        "Minimum": {
-          "Value": 24.2,
-          "Unit": "C",
-          "UnitType": 17
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Một vài cơn mưa rào và mưa dông",
+        "LongPhrase": "Một vài cơn mưa rào và mưa dông",
+        "PrecipitationProbability": 72,
+        "ThunderstormProbability": 43,
+        "RainProbability": 72,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 3.7,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 25,
+            "Localized": "BĐB",
+            "English": "NNE"
+          }
         },
-        "Maximum": {
-          "Value": 32.4,
-          "Unit": "C",
-          "UnitType": 17
+        "WindGust": {
+          "Speed": {
+            "Value": 18.5,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 271,
+            "Localized": "T",
+            "English": "W"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 6,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 6,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2.5,
+        "HoursOfRain": 2.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 89,
+        "Evapotranspiration": {
+          "Value": 2,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 2432.6,
+          "Unit": "W/m²",
+          "UnitType": 33
         }
       },
-      "Day": {
-        "Icon": 12,
-        "IconPhrase": "Mưa rào",
+      "Night": {
+        "Icon": 7,
+        "IconPhrase": "Có mây",
         "HasPrecipitation": true,
         "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Night": {
-        "Icon": 35,
-        "IconPhrase": "Ít mây",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
-      ],
-      "MobileLink": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c",
-      "Link": "http://www.accuweather.com/vi/vn/ho-chi-minh-city/353981/daily-weather-forecast/353981?day=4&unit=c"
-    },
-    {
-      "Date": "2022-10-23T07:00:00+07:00",
-      "EpochDate": 1666483200,
-      "Temperature": {
-        "Minimum": {
-          "Value": 24.3,
-          "Unit": "C",
-          "UnitType": 17
+        "PrecipitationIntensity": "Moderate",
+        "ShortPhrase": "Mưa dông ở một số phần trong khu vực",
+        "LongPhrase": "Mưa dông ở một số phần trong khu vực",
+        "PrecipitationProbability": 47,
+        "ThunderstormProbability": 28,
+        "RainProbability": 47,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 1.9,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 148,
+            "Localized": "NĐN",
+            "English": "SSE"
+          }
         },
-        "Maximum": {
-          "Value": 31.6,
-          "Unit": "C",
-          "UnitType": 17
+        "WindGust": {
+          "Speed": {
+            "Value": 9.3,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 72,
+            "Localized": "ĐĐB",
+            "English": "ENE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 4.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 4.5,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 1,
+        "HoursOfRain": 1,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 72,
+        "Evapotranspiration": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 25.7,
+          "Unit": "W/m²",
+          "UnitType": 33
         }
-      },
-      "Day": {
-        "Icon": 15,
-        "IconPhrase": "Mưa dông",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Night": {
-        "Icon": 12,
-        "IconPhrase": "Mưa rào",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Moderate"
       },
       "Sources": [
         "AccuWeather"
