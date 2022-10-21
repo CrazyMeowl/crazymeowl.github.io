@@ -2,11 +2,83 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/carousel.css" rel="stylesheet">
+    <style>
+	    body {
+	      font-family: "Trirong", serif;
+	    }
+    </style>
+
     <title>CrazyMeowl</title>
+
   </head>
+
   <body>
-    Hai
-    <script src="index.js"></script>
+  	<header>
+		  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		    <div class="container-fluid">
+		      <a class="navbar-brand" href="#">CrazyMeowl</a>
+		      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		      </button>
+		      <div class="collapse navbar-collapse" id="navbarCollapse">
+		        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+		          <li class="nav-item">
+		            <a class="nav-link active" aria-current="page" href="#">Home</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" href="#">Link</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+		          </li>
+		        </ul>
+		        <form class="d-flex">
+		          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		          <button class="btn btn-outline-success" type="submit">Search</button>
+		        </form>
+		      </div>
+		    </div>
+		  </nav>
+		</header>
+
+		<main>
+			<div class='container-fluid'>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-bs-interval="false">
+					<div class="carousel-indicators">
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+					<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+					</div>
+					<div class="carousel-inner" id='daily'>
+						ERROR : JavaScript is not working on this web page.
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+			<div class='container-fluid' id='hourly'>
+				Hourly forecast should be here
+			</div>
+			
+		</main>
+  	
+
+
+    <script src="./scripts/weather.js"></script>
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
