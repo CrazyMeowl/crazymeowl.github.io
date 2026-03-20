@@ -1,0 +1,69 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Delta Force Materials & Ammo Tool</title>
+  <!-- Bootstrap CSS to replace custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/deltaforce.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container py-4">
+    <div class="d-flex align-items-start">
+      <div>
+        <h1 data-i18n="title">Delta Force Materials & Ammo Tool</h1>
+        <p class="lead" data-i18n="materials_lead">A tool to help Delta Force players track materials and ammo profitability.</p>
+
+        <p class="mt-3" data-i18n="note_warning">Note: This tool is a work in progress and may not be fully accurate. Use at your own risk.</p>
+        <p class="mt-3" data-i18n="instructions"> Look up the price of each item in the game's auction house and enter it below to calculate
+          profitability.</p>
+        <div class="mt-3">
+          <button id="saveBtn" class="btn btn-primary me-2" data-i18n="save">Save overrides (local)</button>
+          <button id="loadBtn" class="btn btn-secondary me-2" data-i18n="load">Load overrides (local)</button>
+          <button id="clearBtn" class="btn btn-danger" data-i18n="clear">Clear overrides</button>
+        </div>
+      </div>
+      <div class="ms-auto">
+        <select id="localeSelect" class="form-select form-select-sm w-auto" aria-label="Language"></select>
+      </div>
+    </div>
+    <!-- Materials Table -->
+    <h1 data-i18n="title">Materials</h1>
+    <table id="materialsTable" class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th data-i18n="th_image">Image</th>
+          <th data-i18n="th_name">Name</th>
+          <th data-i18n="th_price_override">Price (override)</th>
+          <th data-i18n="th_recipe">Recipe</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <!-- Ammo Table -->
+    <h2 data-i18n="ammo_heading">Ammo</h2>
+    <table id="ammoTable" class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th data-i18n="th_image">Image</th>
+          <th data-i18n="th_name">Name</th>
+          <th data-i18n="th_recipe">Recipe</th>
+          <th data-i18n="th_qty">Qty</th>
+          <th data-i18n="th_craft_price">Craft Price</th>
+          <th data-i18n="th_ah_price_1">AH Price (1)</th>
+          <th data-i18n="th_ah_price_qty">AH Price (qty)</th>
+          <th data-i18n="th_profit_8">Profit / 8h</th>
+          <th data-i18n="th_profit_24">Profit / 24h</th>
+          <th data-i18n="th_rank">Rank</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+
+
+  </div>
+
+  <script src="scripts/deltaforce.js"></script>
+</body>
+
+</html>

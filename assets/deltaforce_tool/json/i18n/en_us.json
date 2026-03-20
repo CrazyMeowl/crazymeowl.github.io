@@ -1,0 +1,22 @@
+{
+  "title": "Delta Force Materials & Ammo Tool",
+  "materials_lead": "Displays every material found in assets/material.",
+  "save": "Save overrides (local)",
+  "load": "Load overrides (local)",
+  "clear": "Clear overrides",
+  "ammo_heading": "Ammo",
+  "th_image": "Image",
+  "th_name": "Name",
+  "th_price_override": "Price (override)",
+  "th_recipe": "Recipe",
+  "th_qty": "Qty",
+  "th_craft_price": "Craft Price",
+  "th_ah_price_1": "AH Price (1)",
+  "th_ah_price_qty": "AH Price (qty)",
+  "th_profit_8": "Profit / 8h",
+  "th_profit_24": "Profit / 24h",
+  "th_rank": "Rank",
+  "failed_load_json": "Failed to load JSON data — checked: %s",
+  "note_warning": "Note: This tool is a work in progress and may not be fully accurate. Use at your own risk.",
+  "instructions": "Look up the price of each item in the game's auction house and enter it below to calculate profitability."
+}

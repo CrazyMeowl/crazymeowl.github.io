@@ -1,0 +1,50 @@
+{
+  "AngleGrinder": {
+    "image": "AngleGrinder.png",
+    "price": 4241
+  },
+  "ElectricBreachingHammer": {
+    "image": "ElectricBreachingHammer.png",
+    "price": 4373
+  },
+  "BasicFuel": {
+    "image": "BasicFuel.png",
+    "price": 17912
+  },
+  "GunPowder": {
+    "image": "GunPowder.png",
+    "price": 24660
+  },
+  "BasicAmmoProductionParts": {
+    "image": "BasicAmmoProductionParts.png",
+    "price": 28078
+  },
+  "HighPrecisionDigitalCaliper": {
+    "image": "HighPrecisionDigitalCaliper.png",
+    "price": 18028
+  },
+  "CordlessPortableDrill": {
+    "image": "CordlessPortableDrill.png",
+    "price": 36095
+  },
+  "SpinningHandSaw": {
+    "image": "SpinningHandSaw.png",
+    "price": 46908
+  },
+  "Cutlass": {
+    "image": "Cutlass.png",
+    "price": 40687
+  },
+  "BoxedDripCoffee": {
+    "image": "BoxedDripCoffee.png",
+    "price": 363867
+  },
+  "PremiumFuel": {
+    "image": "PremiumFuel.png",
+    "recipe": [
+      { "name": "Cutlass", "qty": 1 },
+      { "name": "BoxedDripCoffee", "qty": 1 }
+    ],
+    "output": 4
+  }
+}

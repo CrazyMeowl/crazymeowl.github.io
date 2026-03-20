@@ -1,0 +1,22 @@
+{
+  "title": "Máy Tinh Vật Liệu và Đạn Delta Force",
+  "materials_lead": "Hiển thị mọi nguyên liệu trong thư mục assets/material.",
+  "save": "Lưu ghi đè (cục bộ)",
+  "load": "Tải ghi đè (cục bộ)",
+  "clear": "Xóa ghi đè",
+  "ammo_heading": "Đạn",
+  "th_image": "Hình",
+  "th_name": "Tên",
+  "th_price_override": "Giá (ghi đè)",
+  "th_recipe": "Công thức",
+  "th_qty": "Số lượng",
+  "th_craft_price": "Giá chế tạo",
+  "th_ah_price_1": "Giá AH (1)",
+  "th_ah_price_qty": "Giá AH (số lượng)",
+  "th_profit_8": "Lợi nhuận / 8h",
+  "th_profit_24": "Lợi nhuận / 24h",
+  "th_rank": "Xếp hạng",
+  "failed_load_json": "Không thể tải dữ liệu JSON — đã kiểm tra: %s",
+  "note_warning": "Lưu ý: Công cụ này đang trong quá trình phát triển và có thể không hoàn toàn chính xác. Sử dụng cẩn thận.",
+  "instructions": "Tra cứu giá của từng mục trong chợ đấu giá của trò chơi và nhập phía dưới để tính lợi nhuận."
+}

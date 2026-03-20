@@ -1,0 +1,87 @@
+{
+  "12.7x55mm": {
+    "image": "12.7x55mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 4 }, { "name": "HighPrecisionDigitalCaliper", "qty": 2 }, { "name": "BasicFuel", "qty": 5 } ],
+    "output": 90,
+    "ah_price_1": 8203
+  },
+  "5.45x39mm": {
+    "image": "5.45x39mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "ElectricBreachingHammer", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6234
+  },
+  "5.56x45mm": {
+    "image": "5.56x45mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 2 }, { "name": "AngleGrinder", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6422
+  },
+  "5.7x28mm": {
+    "image": "5.7x28mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "GunPowder", "qty": 2 }, { "name": "AngleGrinder", "qty": 1 } ],
+    "output": 120,
+    "ah_price_1": 6327
+  },
+  "5.8x42mm": {
+    "image": "5.8x42mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 2 }, { "name": "GunPowder", "qty": 1 }, { "name": "AngleGrinder", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6475
+  },
+  "6.8x51mm": {
+    "image": "6.8x51mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 3 }, { "name": "GunPowder", "qty": 3 } ],
+    "output": 120,
+    "ah_price_1": 6879
+  },
+  "7.62x39mm": {
+    "image": "7.62x39mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 2 }, { "name": "BasicFuel", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6246
+  },
+  "7.62x39mm_SUB": {
+    "image": "7.62x39mm_SUB.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "HighPrecisionDigitalCaliper", "qty": 2 }, { "name": "AngleGrinder", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6362
+  },
+  "7.62x51mm": {
+    "image": "7.62x51mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 3 }, { "name": "BasicAmmoProductionParts", "qty": 1 }, { "name": "GunPowder", "qty": 1 }, { "name": "BasicFuel", "qty": 3 } ],
+    "output": 120,
+    "ah_price_1": 7267
+  },
+  "7.62x54mm": {
+    "image": "7.62x54mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 3 }, { "name": "BasicAmmoProductionParts", "qty": 3 }, { "name": "BasicFuel", "qty": 3 } ],
+    "output": 120,
+    "ah_price_1": 7054
+  },
+  "9x39mm": {
+    "image": "9x39mm.png",
+    "price": 9.5,
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 1 }, { "name": "BasicFuel", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 6694
+  },
+  "4.6x30mm": {
+    "image": "4.6x30mm.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "HighPrecisionDigitalCaliper", "qty": 1 }, { "name": "BasicFuel", "qty": 2 }, { "name": "AngleGrinder", "qty": 2 } ],
+    "output": 150,
+    "ah_price_1": 5482
+  },
+  ".300 BLK": {
+    "image": "300_BLK.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 2 }, { "name": "BasicAmmoProductionParts", "qty": 1 }, { "name": "BasicFuel", "qty": 3 }, { "name": "AngleGrinder", "qty": 1 } ],
+    "output": 120,
+    "ah_price_1": 6393
+  },
+  "45-70 Govt FTX": {
+    "image": "45-70_Govt_FTX.png",
+    "recipe": [ { "name": "PremiumFuel", "qty": 3 }, { "name": "SpinningHandSaw", "qty": 1 }, { "name": "GunPowder", "qty": 2 }, { "name": "CordlessPortableDrill", "qty": 2 } ],
+    "output": 120,
+    "ah_price_1": 7055
+  }
+}
