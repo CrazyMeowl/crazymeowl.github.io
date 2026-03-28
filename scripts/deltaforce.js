@@ -715,12 +715,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // clear existing overrides before applying new ones
             Object.keys(overrides).forEach(k => delete overrides[k]);
             Object.keys(ahOverrides).forEach(k => delete ahOverrides[k]);
-            // remove craftable materials from imported map so computed values remain authoritative
-            Object.keys(data).forEach(k => { if (materialsCache[k] && materialsCache[k].recipe) delete data[k]; });
-            Object.assign(overrides, data);
-            Object.assign(ahOverrides, data);
-            renderAll();
-            alert('Prices imported.');
+        // remove craftable materials from imported map so computed values remain authoritative
+        const filtered = Object.assign({}, data);
+        Object.keys(filtered).forEach(k => { if (materialsCache[k] && materialsCache[k].recipe) delete filtered[k]; });
+        // apply filtered values to overrides and AH overrides
+        Object.assign(overrides, filtered);
+        Object.assign(ahOverrides, filtered);
+        // also update active priceMap and persist it to localStorage
+        priceMap = Object.assign({}, filtered);
+        try { localStorage.setItem(storagePrefix + 'priceMap', JSON.stringify(priceMap)); } catch (e) { console.warn('Failed to save priceMap', e); }
+        renderAll();
+        alert('Prices imported and saved to local storage.');
         } catch (e) {
             alert('Invalid JSON. Please check the format.');
             console.error('JSON parse error:', e);
