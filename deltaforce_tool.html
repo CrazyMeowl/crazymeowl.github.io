@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <title>Delta Force Materials & Ammo Tool</title>
   <!-- Bootstrap CSS to replace custom styles -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link href="css/deltaforce.css" rel="stylesheet">
 </head>
 
@@ -22,13 +22,14 @@
           <button id="exportPricesBtn" class="btn btn-outline-secondary" title="Download the currently loaded price map as JSON">Export prices</button>
         </div>
       </div>
-      <div class="ms-auto">
+      <div class="ms-auto d-flex align-items-center gap-2">
         <select id="localeSelect" class="form-select form-select-sm w-auto" aria-label="Language"></select>
+        <button id="themeToggleBtn" class="btn btn-outline-secondary btn-sm" title="Toggle dark theme">🌙</button>
       </div>
     </div>
     <!-- Materials Table -->
     <h1 data-i18n="material_heading">Materials</h1>
-    <table id="materialsTable" class="table table-sm table-striped deltaforce-table">
+    <table id="materialsTable" class="table table-sm deltaforce-table">
       <thead>
         <tr>
           <th data-i18n="th_image">Image</th>
@@ -41,7 +42,7 @@
     </table>
     <!-- Ammo Table -->
     <h2 data-i18n="ammo_heading">Ammo</h2>
-    <table id="ammoTable" class="table table-sm table-striped deltaforce-table">
+    <table id="ammoTable" class="table table-sm deltaforce-table">
       <thead>
         <tr>
           <th data-i18n="th_image">Image</th>
@@ -64,6 +65,7 @@
   </div>
 
   <script src="scripts/deltaforce.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -90,6 +90,21 @@ function populateLocaleSelector() {
 }
 const storagePrefix = 'deltaforce:'; // namespace localStorage keys
 
+// Apply saved theme early so the page isn't white briefly on load
+try {
+  const _themeKey = storagePrefix + 'theme';
+  const _stored = localStorage.getItem(_themeKey);
+  if (_stored === 'dark' || _stored === '1' || _stored === 'true') {
+    // Use Bootstrap 5.3 color mode attribute so built-in components respect dark theme
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+    try {
+      const container = document.querySelector('.container');
+      if (container) container.setAttribute('data-bs-theme', 'dark');
+      document.querySelectorAll('.deltaforce-table').forEach(t => t.classList.add('table-dark'));
+    } catch (e) { }
+  }
+} catch (e) { /* ignore */ }
+
 // Cached data and overrides
 let materialsCache = {};
 let ammoCache = {};
@@ -296,14 +311,14 @@ function renderMaterials(materials) {
       const hasRecipe = item.recipe && typeof item.recipe === 'object';
       const recipeHtml = hasRecipe ? renderRecipeHtml(item.recipe, compute) : '—';
       const recipeJsonAttr = hasRecipe ? JSON.stringify(item.recipe).replace(/'/g,'&#39;') : '';
-      const displayName = item.name || t(name) || name;
+      const displayName = (translations && translations[name]) ? translations[name] : (item.name || name);
       // If this material has a recipe, always treat it as computed (ignore stored overrides)
       // and make the input read-only so the computed value is shown consistently.
       const disabledAttr = hasRecipe ? 'disabled' : '';
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${img ? `<img class="thumb" src="${img}" alt="${displayName}"/>` : ''}</td>
-        <td>${displayName}</td>
+        <td data-i18n="${name}">${displayName}</td>
         <td><input type="number" step="1" min="0" data-name="${name}" class="price-input" placeholder="${placeholder}" value="" ${disabledAttr}></td>
         <td class="recipe-cell" data-recipe='${recipeJsonAttr}'>${recipeHtml}</td>
       `;
@@ -367,7 +382,7 @@ function renderAmmo(materials, ammo) {
     const recipeJsonAttr = hasRecipe ? JSON.stringify(item.recipe).replace(/'/g,'&#39;') : '';
     const outputQty = item.output && typeof item.output === 'number' ? item.output : 1;
 
-    const displayName = item.name || t(name) || name;
+    const displayName = item.name || name;
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${img ? `<img class="thumb" src="${img}" alt="${displayName}"/>` : ''}</td>
@@ -412,33 +427,32 @@ function computeAHQty(craftPrice, outputQty, name, item) {
 
 function renderRecipeHtml(recipe, compute) {
   if (!recipe || typeof recipe !== 'object') return '—';
+
+  // Render recipe parts using Bootstrap badges so they adapt to theme
   const parts = [];
-  // support both array-of-components and object mapping { key: qty }
+  const renderPart = (compName, qty) => {
+    const key = findKey(materialsCache, compName);
+    const mat = materialsCache[key];
+    const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
+    const price = (typeof compute === 'function') ? compute(compName) : null;
+    const priceHtml = (price === null || price === undefined || price === '') ? '' : `<small class="text-muted ms-2">$${Number(price).toFixed(2)}</small>`;
+    const display = (translations && translations[compName]) ? translations[compName] : ((mat && mat.name) ? mat.name : compName);
+    const imgHtml = imgSrc ? `<img src="${imgSrc}" alt="${display}" onerror="this.style.opacity=.6" style="width:24px;height:24px;object-fit:contain;border-radius:3px;">` : '';
+    // show only image, qty and optional price — omit material name
+    return `<span class="badge rounded-pill bg-body text-body d-inline-flex align-items-center gap-2 p-2 me-1">${imgHtml}<small class="text-muted">×${qty}</small>${priceHtml}</span>`;
+  };
+
   if (Array.isArray(recipe)) {
     for (const comp of recipe) {
       let compName, qty;
       if (typeof comp === 'string') { compName = comp; qty = 1; }
       else { compName = comp.name; qty = comp.qty || 1; }
-      const k = findKey(materialsCache, compName);
-      const mat = materialsCache[k];
-      const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
-      const price = (typeof compute === 'function') ? compute(compName) : null;
-      const priceHtml = (price === null || price === undefined || price === '') ? '' : `<div style="font-size:0.8rem;color:#444;margin-left:6px">$${Number(price).toFixed(2)}</div>`;
-      const display = t(compName) || ((mat && mat.name) ? mat.name : compName);
-      if (imgSrc) parts.push(`<span class="recipe-part"><img src="${imgSrc}" alt="${display}" onerror="this.style.opacity=.6"/><span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
-      else parts.push(`<span class="recipe-part">${display}<span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
+      parts.push(renderPart(compName, qty));
     }
   } else {
     for (const [compName, qtyRaw] of Object.entries(recipe)) {
       const qty = Number(qtyRaw) || 0;
-      const k = findKey(materialsCache, compName);
-      const mat = materialsCache[k];
-      const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
-      const price = (typeof compute === 'function') ? compute(compName) : null;
-      const priceHtml = (price === null || price === undefined || price === '') ? '' : `<div style="font-size:0.8rem;color:#444;margin-left:6px">$${Number(price).toFixed(2)}</div>`;
-      const display = t(compName) || ((mat && mat.name) ? mat.name : compName);
-      if (imgSrc) parts.push(`<span class="recipe-part"><img src="${imgSrc}" alt="${display}" onerror="this.style.opacity=.6"/><span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
-      else parts.push(`<span class="recipe-part">${display}<span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
+      parts.push(renderPart(compName, qty));
     }
   }
   return parts.join('');
@@ -676,6 +690,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const savePricesBtn = document.getElementById('savePricesBtn');
     const importPricesBtn = document.getElementById('importPricesBtn');
     const exportPricesBtn = document.getElementById('exportPricesBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeKey = storagePrefix + 'theme';
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+        const container = document.querySelector('.container'); if (container) container.setAttribute('data-bs-theme','dark');
+        document.querySelectorAll('.deltaforce-table').forEach(t => {
+          t.classList.add('table-dark','bg-dark','text-light');
+          try { t.style.backgroundColor = '#0f1113'; t.style.color = '#d7e4f2'; } catch (e) {}
+        });
+      } else {
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+        const container = document.querySelector('.container'); if (container) container.setAttribute('data-bs-theme','light');
+        document.querySelectorAll('.deltaforce-table').forEach(t => {
+          t.classList.remove('table-dark','bg-dark','text-light');
+          try { t.style.backgroundColor = ''; t.style.color = ''; } catch (e) {}
+        });
+      }
+      if (themeToggleBtn) themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    // initialize theme from localStorage
+    try {
+      const stored = localStorage.getItem(themeKey);
+      const isDark = stored === 'dark' || stored === '1' || stored === 'true';
+      applyTheme(isDark);
+    } catch (e) { /* ignore */ }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-bs-theme') !== 'dark';
+        try { localStorage.setItem(themeKey, isDark ? 'dark' : 'light'); } catch (e) {}
+        applyTheme(isDark);
+      });
+    }
 
     loadLocale().then(loadAll);
 

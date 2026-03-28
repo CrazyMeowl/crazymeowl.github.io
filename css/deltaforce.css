@@ -18,3 +18,29 @@
 .deltaforce-table tr:nth-child(even) td{background:#ffffff}
 .deltaforce-table td:first-child{width:64px}
 .ammo-price{font-weight:700}
+
+/* Dark theme styles applied when `body.theme-dark` is present
+/* Prefer html.theme-dark for highest specificity against Bootstrap rules */
+[data-bs-theme="dark"], body[data-bs-theme="dark"], html[data-bs-theme="dark"], html.theme-dark, body.theme-dark { background: #0f1113 !important; color: #e6eef6 !important; }
+[data-bs-theme="dark"] .container, body[data-bs-theme="dark"] .container, html[data-bs-theme="dark"] .container, html.theme-dark .container, body.theme-dark .container { background: transparent !important; }
+[data-bs-theme="dark"] .lead, body[data-bs-theme="dark"] .lead, html[data-bs-theme="dark"] .lead, html.theme-dark .lead, body.theme-dark .lead, [data-bs-theme="dark"] p, body[data-bs-theme="dark"] p, html[data-bs-theme="dark"] p, html.theme-dark p, body.theme-dark p { color: #cfd9e6 !important; }
+[data-bs-theme="dark"] .deltaforce-table th, [data-bs-theme="dark"] .deltaforce-table td, body[data-bs-theme="dark"] .deltaforce-table th, body[data-bs-theme="dark"] .deltaforce-table td, html[data-bs-theme="dark"] .deltaforce-table th, html[data-bs-theme="dark"] .deltaforce-table td, html.theme-dark .deltaforce-table th, html.theme-dark .deltaforce-table td, body.theme-dark .deltaforce-table th, body.theme-dark .deltaforce-table td { background: #121316 !important; color: #d7e4f2 !important; border-bottom-color: #222428 !important; }
+[data-bs-theme="dark"] .deltaforce-table th, body[data-bs-theme="dark"] .deltaforce-table th, html[data-bs-theme="dark"] .deltaforce-table th, html.theme-dark .deltaforce-table th, body.theme-dark .deltaforce-table th { background: #151619 !important; }
+[data-bs-theme="dark"] .deltaforce-table tr:hover td, body[data-bs-theme="dark"] .deltaforce-table tr:hover td, html[data-bs-theme="dark"] .deltaforce-table tr:hover td, html.theme-dark .deltaforce-table tr:hover td, body.theme-dark .deltaforce-table tr:hover td { background: #1a1c1f !important; }
+[data-bs-theme="dark"] .deltaforce-table tr:nth-child(even) td, body[data-bs-theme="dark"] .deltaforce-table tr:nth-child(even) td, html[data-bs-theme="dark"] .deltaforce-table tr:nth-child(even) td, html.theme-dark .deltaforce-table tr:nth-child(even) td, body.theme-dark .deltaforce-table tr:nth-child(even) td { background: #0f1113 !important; }
+[data-bs-theme="dark"] .recipe-part, body[data-bs-theme="dark"] .recipe-part, html[data-bs-theme="dark"] .recipe-part, html.theme-dark .recipe-part, body.theme-dark .recipe-part { background: #213227 !important; color: #dfeee0 !important; }
+[data-bs-theme="dark"] .recipe-part img, body[data-bs-theme="dark"] .recipe-part img, html[data-bs-theme="dark"] .recipe-part img, html.theme-dark .recipe-part img, body.theme-dark .recipe-part img { background: transparent !important; }
+[data-bs-theme="dark"] input, body[data-bs-theme="dark"] input, html[data-bs-theme="dark"] input, html.theme-dark input, body.theme-dark input, [data-bs-theme="dark"] select, body[data-bs-theme="dark"] select, html[data-bs-theme="dark"] select, html.theme-dark select, body.theme-dark select, [data-bs-theme="dark"] .form-select, body[data-bs-theme="dark"] .form-select, html[data-bs-theme="dark"] .form-select, html.theme-dark .form-select, body.theme-dark .form-select { background: #0f1113 !important; color: #e6eef6 !important; border-color: #2b2f33 !important }
+[data-bs-theme="dark"] .btn-outline-secondary, body[data-bs-theme="dark"] .btn-outline-secondary, html[data-bs-theme="dark"] .btn-outline-secondary, html.theme-dark .btn-outline-secondary, body.theme-dark .btn-outline-secondary { color: #e6eef6 !important; border-color: #33363a !important }
+[data-bs-theme="dark"] .btn-primary, body[data-bs-theme="dark"] .btn-primary, html[data-bs-theme="dark"] .btn-primary, html.theme-dark .btn-primary, body.theme-dark .btn-primary { background-color: #1e6fbf !important; border-color: #1e6fbf !important } */
+
+/* If a table element itself has the attribute, style it directly */
+.deltaforce-table.table-dark th, .deltaforce-table.table-dark td { background: #121316 !important; color: #d7e4f2 !important; border-bottom-color: #222428 !important; }
+.deltaforce-table.table-dark th { background: #151619 !important; }
+.deltaforce-table.table-dark tr:hover td { background: #1a1c1f !important; }
+.deltaforce-table.table-dark tr:nth-child(even) td { background: #0f1113 !important; }
+
+/* Recipe badge visuals — ensure pill background is visible in both themes */
+.deltaforce-table .badge { background: #f1f3f5; color: #111827; border: 1px solid rgba(0,0,0,0.04); }
+.deltaforce-table.table-dark .badge { background: #1f2124 !important; color: #d7e4f2 !important; border: 1px solid rgba(255,255,255,0.04) !important; }
+.deltaforce-table .badge img { filter: none; }
