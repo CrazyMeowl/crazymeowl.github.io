@@ -15,6 +15,12 @@ const ammoPathCandidates = [
 // Base asset folder for images (moved into a subfolder)
 const assetBase = 'assets/deltaforce_tool';
 
+// Optional external price map (separate from item JSON)
+const pricesPathCandidates = [
+  'assets/deltaforce_tool/json/price_map.json'
+];
+let priceMap = {}; // key -> numeric price (strings will be coerced)
+
 // Localization
 const availableLocales = ['en_us','vi_vn'];
 let locale = null;
@@ -95,33 +101,49 @@ const ahOverrides = {}; // user-entered auction house price per 1 for ammo
 function computePerUnitFor(combinedData) {
   const memo = {};
   return function compute(name, stack = []) {
-    if (overrides[name] !== undefined && overrides[name] !== null && overrides[name] !== '') {
-      const v = Number(overrides[name]);
-      if (!Number.isNaN(v)) { memo[name] = v; return v; }
-    }
     if (memo[name] !== undefined) return memo[name];
     if (stack.includes(name)) { memo[name] = null; return null; }
     const key = findKey(combinedData, name);
     const item = combinedData[key];
     if (!item) { memo[name] = null; return null; }
-    if (typeof item.price === 'number') { memo[name] = item.price; return item.price; }
-    if (Array.isArray(item.recipe)) {
+
+    // If the item is craftable, always compute from its recipe (ignore any override for this item).
+    if (item && item.recipe && typeof item.recipe === 'object') {
       const next = stack.concat(name);
       let sum = 0;
-      for (const comp of item.recipe) {
-        let compName, qty;
-        if (typeof comp === 'string') { compName = comp; qty = 1; }
-        else { compName = comp.name; qty = comp.qty || 1; }
-        const p = compute(compName, next);
-        if (p === null) { memo[name] = null; return null; }
-        sum += qty * p;
+      if (Array.isArray(item.recipe)) {
+        for (const comp of item.recipe) {
+          let compName, qty;
+          if (typeof comp === 'string') { compName = comp; qty = 1; }
+          else { compName = comp.name; qty = comp.qty || 1; }
+          const p = compute(compName, next);
+          if (p === null) { memo[name] = null; return null; }
+          sum += qty * p;
+        }
+      } else {
+        for (const [compName, qtyRaw] of Object.entries(item.recipe)) {
+          const qty = Number(qtyRaw) || 0;
+          const p = compute(compName, next);
+          if (p === null) { memo[name] = null; return null; }
+          sum += qty * p;
+        }
       }
-      // If the recipe produces multiple units, divide total cost by output quantity (per-unit price)
       if (item.output && typeof item.output === 'number' && item.output > 0) {
         sum = sum / item.output;
       }
       memo[name] = sum; return sum;
     }
+
+    // Not craftable: allow explicit overrides, then priceMap, then item.price
+    if (overrides[name] !== undefined && overrides[name] !== null && overrides[name] !== '') {
+      const v = Number(overrides[name]);
+      if (!Number.isNaN(v)) { memo[name] = v; return v; }
+    }
+    if (priceMap && priceMap[name] !== undefined) {
+      const v = Number(priceMap[name]);
+      if (!Number.isNaN(v)) { memo[name] = v; return v; }
+    }
+    if (typeof item.price === 'number') { memo[name] = item.price; return item.price; }
     memo[name] = null; return null;
   };
 }
@@ -136,18 +158,34 @@ function computeTotalFor(combinedData) {
     const key = findKey(combinedData, name);
     const item = combinedData[key];
     if (!item) { memo[name] = null; return null; }
-    if (Array.isArray(item.recipe)) {
+    if (item && item.recipe && typeof item.recipe === 'object') {
       const next = stack.concat(name);
       let sum = 0;
-      for (const comp of item.recipe) {
-        let compName, qty;
-        if (typeof comp === 'string') { compName = comp; qty = 1; }
-        else { compName = comp.name; qty = comp.qty || 1; }
-        const p = perUnit(compName, next);
-        if (p === null) { memo[name] = null; return null; }
-        sum += qty * p;
+      if (Array.isArray(item.recipe)) {
+        for (const comp of item.recipe) {
+          let compName, qty;
+          if (typeof comp === 'string') { compName = comp; qty = 1; }
+          else { compName = comp.name; qty = comp.qty || 1; }
+          const p = perUnit(compName, next);
+          if (p === null) { memo[name] = null; return null; }
+          sum += qty * p;
+        }
+      } else {
+        for (const [compName, qtyRaw] of Object.entries(item.recipe)) {
+          const qty = Number(qtyRaw) || 0;
+          const p = perUnit(compName, next);
+          if (p === null) { memo[name] = null; return null; }
+          sum += qty * p;
+        }
       }
       memo[name] = sum; return sum;
+    }
+    // allow external price map to provide a direct price for this item
+    const priceKey = findKey(priceMap, name);
+    if (priceMap && priceMap[priceKey] !== undefined) {
+      const out = item.output && typeof item.output === 'number' ? item.output : 1;
+      const v = Number(priceMap[priceKey]);
+      if (!Number.isNaN(v)) { memo[name] = v * out; return memo[name]; }
     }
     if (typeof item.price === 'number') {
       const out = item.output && typeof item.output === 'number' ? item.output : 1;
@@ -166,6 +204,15 @@ async function loadAll() {
     else materialsCache = await fetchJsonWithFallback(materialsPathCandidates);
     if (aScript) ammoCache = JSON.parse(aScript.textContent);
     else ammoCache = await fetchJsonWithFallback(ammoPathCandidates);
+    // load external price map (localStorage preferred, then files)
+    try {
+      const pm = await fetchJsonWithFallback(pricesPathCandidates).catch(() => null);
+      if (pm) {
+        // support both array-of-one-object and plain object formats
+        if (Array.isArray(pm) && pm.length) priceMap = Object.assign({}, pm[0]);
+        else if (typeof pm === 'object') priceMap = Object.assign({}, pm);
+      }
+    } catch (e) { /* ignore missing price map */ }
     // load any stored overrides then render
     loadOverridesFromLocalStorage();
     renderAll();
@@ -197,40 +244,21 @@ async function fetchJsonWithFallback(candidates) {
 }
 
 // LocalStorage helpers
-function persistOverrides(silent = false) {
-  try {
-    localStorage.setItem(storagePrefix + 'materialOverrides', JSON.stringify(overrides));
-    localStorage.setItem(storagePrefix + 'ammoAHOverrides', JSON.stringify(ahOverrides));
-    if (!silent) alert('Overrides saved locally');
-  } catch (e) { if (!silent) alert('Failed to save overrides: '+e); }
-}
-
 function loadOverridesFromLocalStorage() {
   try {
-    const m = localStorage.getItem(storagePrefix + 'materialOverrides');
-    const a = localStorage.getItem(storagePrefix + 'ammoAHOverrides');
-    if (m) {
-      const parsed = JSON.parse(m);
+    const p = localStorage.getItem(storagePrefix + 'priceMap');
+    if (p) {
+      const parsed = JSON.parse(p);
+      // Remove any craftable material keys from loaded overrides so computed values remain authoritative
+      Object.keys(parsed).forEach(k => {
+        if (materialsCache[k] && materialsCache[k].recipe) delete parsed[k];
+      });
+      Object.assign(priceMap, parsed);
+      // Also populate overrides from the loaded price map (excluding craftables)
       Object.assign(overrides, parsed);
-    }
-    if (a) {
-      const parsed = JSON.parse(a);
       Object.assign(ahOverrides, parsed);
     }
-  } catch (e) { console.warn('Failed to load overrides from localStorage', e); }
-}
-
-function clearOverridesLocal() {
-  if (!confirm('Clear stored overrides?')) return;
-  localStorage.removeItem(storagePrefix + 'materialOverrides');
-  localStorage.removeItem(storagePrefix + 'ammoAHOverrides');
-  // also clear in-memory and inputs
-  for (const k in overrides) delete overrides[k];
-  for (const k in ahOverrides) delete ahOverrides[k];
-  document.querySelectorAll('.price-input').forEach(i => i.value = '');
-  document.querySelectorAll('.ah-input').forEach(i => i.value = '');
-  updateComputedDisplays();
-  alert('Overrides cleared');
+  } catch (e) { console.warn('Failed to load priceMap from localStorage', e); }
 }
 
 // Helper: find a key in an object, try exact then case-insensitive match
@@ -265,35 +293,58 @@ function renderMaterials(materials) {
     const img = item.image ? `${assetBase}/material/${item.image}` : '';
     const price = compute(name);
     const placeholder = price === null ? '' : price.toFixed(2);
-      const recipeHtml = Array.isArray(item.recipe) ? renderRecipeHtml(item.recipe, compute) : '—';
-      const recipeJsonAttr = Array.isArray(item.recipe) ? JSON.stringify(item.recipe).replace(/'/g,'&#39;') : '';
+      const hasRecipe = item.recipe && typeof item.recipe === 'object';
+      const recipeHtml = hasRecipe ? renderRecipeHtml(item.recipe, compute) : '—';
+      const recipeJsonAttr = hasRecipe ? JSON.stringify(item.recipe).replace(/'/g,'&#39;') : '';
+      const displayName = item.name || t(name) || name;
+      // If this material has a recipe, always treat it as computed (ignore stored overrides)
+      // and make the input read-only so the computed value is shown consistently.
+      const disabledAttr = hasRecipe ? 'disabled' : '';
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${img ? `<img class="thumb" src="${img}" alt="${name}"/>` : ''}</td>
-        <td>${name}</td>
-        <td><input type="number" step="0.01" min="0" data-name="${name}" class="price-input" placeholder="${placeholder}" value=""></td>
+        <td>${img ? `<img class="thumb" src="${img}" alt="${displayName}"/>` : ''}</td>
+        <td>${displayName}</td>
+        <td><input type="number" step="1" min="0" data-name="${name}" class="price-input" placeholder="${placeholder}" value="" ${disabledAttr}></td>
         <td class="recipe-cell" data-recipe='${recipeJsonAttr}'>${recipeHtml}</td>
       `;
 
     tbody.appendChild(tr);
   });
 
-  // attach listeners after elements are created
+    // attach listeners after elements are created
   document.querySelectorAll('.price-input').forEach(inp => {
     const name = inp.getAttribute('data-name');
-    // restore existing override value if present
-    if (overrides[name] !== undefined && overrides[name] !== null && overrides[name] !== '') inp.value = overrides[name];
+    const isDisabled = inp.disabled;
+    // restore existing override value if present (only for editable inputs)
+    if (!isDisabled && overrides[name] !== undefined && overrides[name] !== null && overrides[name] !== '') inp.value = overrides[name];
+    if (isDisabled) {
+      // ensure computed marker present so updateComputedDisplays will populate it
+      inp.classList.add('computed');
+      inp.dataset.computed = '1';
+      return; // don't attach listeners to disabled (auto-calculated) inputs
+    }
     inp.addEventListener('input', (e) => {
-      const v = e.target.value.trim();
-      if (v === '') delete overrides[name]; else overrides[name] = Number(v);
+      const raw = e.target.value;
+      // user started typing -> this is an explicit override
+      e.target.classList.remove('computed');
+      delete e.target.dataset.computed;
+      // keep only digits (integers only)
+      const sanitized = raw.replace(/[^0-9]/g, '');
+      if (sanitized !== raw) e.target.value = sanitized;
+      if (sanitized === '') delete overrides[name]; else overrides[name] = parseInt(sanitized, 10);
       // update computed displays without rebuilding inputs (keeps focus)
       updateComputedDisplays();
     });
     inp.addEventListener('blur', (e) => {
       const v = e.target.value.trim();
-      if (v === '') delete overrides[name];
-      // persist silently on blur
-      persistOverrides(true);
+      if (v === '') {
+        delete overrides[name];
+      } else {
+        const n = parseInt(v, 10);
+        if (Number.isNaN(n)) { delete overrides[name]; e.target.value = ''; }
+        else { overrides[name] = n; e.target.value = String(n); }
+      }
+      // update displays after blur
       updateComputedDisplays();
     });
   });
@@ -311,18 +362,20 @@ function renderAmmo(materials, ammo) {
     const perUnitPrice = compute(name);
     const craftTotal = computeTotal(name);
     const priceLabel = craftTotal === null ? '—' : '$' + craftTotal.toFixed(2);
-
-    const recipeHtml = Array.isArray(item.recipe) ? renderRecipeHtml(item.recipe, compute) : (item.price ? '—' : 'Unknown');
+    const hasRecipe = item.recipe && typeof item.recipe === 'object';
+    const recipeHtml = hasRecipe ? renderRecipeHtml(item.recipe, compute) : (item.price ? '—' : 'Unknown');
+    const recipeJsonAttr = hasRecipe ? JSON.stringify(item.recipe).replace(/'/g,'&#39;') : '';
     const outputQty = item.output && typeof item.output === 'number' ? item.output : 1;
 
+    const displayName = item.name || t(name) || name;
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${img ? `<img class="thumb" src="${img}" alt="${name}"/>` : ''}</td>
-        <td>${name}</td>
-        <td class="recipe-cell">${recipeHtml}</td>
+        <td>${img ? `<img class="thumb" src="${img}" alt="${displayName}"/>` : ''}</td>
+        <td>${displayName}</td>
+        <td class="recipe-cell" data-recipe='${recipeJsonAttr}'>${recipeHtml}</td>
         <td class="qty-cell" data-name="${name}">${outputQty}</td>
         <td class="craft-price" data-name="${name}">${priceLabel}</td>
-        <td><input type="number" step="0.01" min="0" class="ah-input" data-ammo-name="${name}" placeholder="${item.ah_price_1||''}" value=""></td>
+        <td><input type="number" step="1" min="0" class="ah-input" data-ammo-name="${name}" placeholder="0" value="0"></td>
         <td class="ah-qty-price" data-name="${name}">${computeAHQty(perUnitPrice, outputQty, name, item)}</td>
         <td class="profit-8" data-name="${name}"></td>
         <td class="profit-24" data-name="${name}"></td>
@@ -342,7 +395,7 @@ function renderAmmo(materials, ammo) {
       if (v === '') delete ahOverrides[name]; else ahOverrides[name] = Number(v);
       updateComputedDisplays();
     });
-    inp.addEventListener('blur', (e) => { const v = e.target.value.trim(); if (v === '') delete ahOverrides[name]; persistOverrides(true); updateComputedDisplays(); });
+    inp.addEventListener('blur', (e) => { const v = e.target.value.trim(); if (v === '') delete ahOverrides[name]; updateComputedDisplays(); });
   });
 }
 
@@ -358,22 +411,37 @@ function computeAHQty(craftPrice, outputQty, name, item) {
 }
 
 function renderRecipeHtml(recipe, compute) {
-  if (!Array.isArray(recipe)) return '—';
-  // use materialsCache images for recipe components and show per-component placeholder price when available
-  return recipe.map(comp => {
-    let compName, qty;
-    if (typeof comp === 'string') { compName = comp; qty = 1; }
-    else { compName = comp.name; qty = comp.qty || 1; }
-    const k = findKey(materialsCache, compName);
-    const mat = materialsCache[k];
-    const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
-    const price = (typeof compute === 'function') ? compute(compName) : null;
-    const priceHtml = (price === null || price === undefined || price === '') ? '' : `<div style="font-size:0.8rem;color:#444;margin-left:6px">$${Number(price).toFixed(2)}</div>`;
-    if (imgSrc) {
-      return `<span class="recipe-part"><img src="${imgSrc}" alt="${compName}" onerror="this.style.opacity=.6"/><span class="qty-badge">×${qty}</span>${priceHtml}</span>`;
+  if (!recipe || typeof recipe !== 'object') return '—';
+  const parts = [];
+  // support both array-of-components and object mapping { key: qty }
+  if (Array.isArray(recipe)) {
+    for (const comp of recipe) {
+      let compName, qty;
+      if (typeof comp === 'string') { compName = comp; qty = 1; }
+      else { compName = comp.name; qty = comp.qty || 1; }
+      const k = findKey(materialsCache, compName);
+      const mat = materialsCache[k];
+      const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
+      const price = (typeof compute === 'function') ? compute(compName) : null;
+      const priceHtml = (price === null || price === undefined || price === '') ? '' : `<div style="font-size:0.8rem;color:#444;margin-left:6px">$${Number(price).toFixed(2)}</div>`;
+      const display = t(compName) || ((mat && mat.name) ? mat.name : compName);
+      if (imgSrc) parts.push(`<span class="recipe-part"><img src="${imgSrc}" alt="${display}" onerror="this.style.opacity=.6"/><span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
+      else parts.push(`<span class="recipe-part">${display}<span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
     }
-    return `<span class="recipe-part">${compName}<span class="qty-badge">×${qty}</span>${priceHtml}</span>`;
-  }).join('');
+  } else {
+    for (const [compName, qtyRaw] of Object.entries(recipe)) {
+      const qty = Number(qtyRaw) || 0;
+      const k = findKey(materialsCache, compName);
+      const mat = materialsCache[k];
+      const imgSrc = mat && mat.image ? `${assetBase}/material/${mat.image}` : '';
+      const price = (typeof compute === 'function') ? compute(compName) : null;
+      const priceHtml = (price === null || price === undefined || price === '') ? '' : `<div style="font-size:0.8rem;color:#444;margin-left:6px">$${Number(price).toFixed(2)}</div>`;
+      const display = t(compName) || ((mat && mat.name) ? mat.name : compName);
+      if (imgSrc) parts.push(`<span class="recipe-part"><img src="${imgSrc}" alt="${display}" onerror="this.style.opacity=.6"/><span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
+      else parts.push(`<span class="recipe-part">${display}<span class="qty-badge">×${qty}</span>${priceHtml}</span>`);
+    }
+  }
+  return parts.join('');
 }
 
 function updateComputedDisplays() {
@@ -382,12 +450,35 @@ function updateComputedDisplays() {
   const computePerUnit = computePerUnitFor(combined);
   const computeTotal = computeTotalFor(combined);
 
-  // update material input placeholders
+  // update material input placeholders/values
   Object.keys(materialsCache).forEach(name => {
     const input = document.querySelector(`input[data-name="${name}"]`);
     if (!input) return;
     const price = computePerUnit(name);
-    input.placeholder = (price === null) ? '' : price.toFixed(2);
+    // If the user has entered an explicit override, don't overwrite it
+    const hasOverride = overrides[name] !== undefined && overrides[name] !== null && overrides[name] !== '';
+    if (hasOverride) {
+      // keep user's value, ensure computed marker removed
+      input.classList.remove('computed');
+      delete input.dataset.computed;
+    } else {
+      if (price === null) {
+        input.placeholder = '';
+        // clear any computed marker
+        input.classList.remove('computed');
+        delete input.dataset.computed;
+        // only clear value if it was previously a computed value
+        if (input.dataset.computed !== undefined) input.value = '';
+      } else {
+        // show computed value. If the input is focused (user typing), don't clobber
+        if (document.activeElement !== input) {
+          input.value = Number(price).toFixed(2);
+        }
+        input.placeholder = Number(price).toFixed(2);
+        input.classList.add('computed');
+        input.dataset.computed = '1';
+      }
+    }
   });
 
   // refresh recipe placeholders (recipe HTML stored as data-recipe on the cell)
@@ -477,6 +568,188 @@ function updateComputedDisplays() {
 // load locale first so UI strings are translated, then load data
 loadLocale().then(() => loadAll());
 // attach save/load/clear button listeners
-document.getElementById('saveBtn').addEventListener('click', () => persistOverrides(false));
-document.getElementById('loadBtn').addEventListener('click', () => { loadOverridesFromLocalStorage(); renderAll(); });
-document.getElementById('clearBtn').addEventListener('click', clearOverridesLocal);
+// legacy saveBtn removed from UI; no-op kept for safety
+
+const loadBtn = document.getElementById('loadBtn');
+if (loadBtn) loadBtn.addEventListener('click', () => {
+  // auto-load the latest dated snapshot (if any)
+  const dates = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(k)) dates.push(k);
+  }
+  if (dates.length === 0) { alert('No dated snapshots found in localStorage'); return; }
+  dates.sort((a,b) => new Date(b) - new Date(a));
+  const choice = dates[0];
+  const raw = localStorage.getItem(choice);
+  if (!raw) { alert('No data found for ' + choice); return; }
+    try {
+    const map = JSON.parse(raw);
+    Object.keys(map).forEach(k => {
+      if (/^MAT_\d+$/.test(k)) {
+        // skip craftable materials when loading dated snapshots so computed values stay authoritative
+        if (!(materialsCache[k] && materialsCache[k].recipe)) overrides[k] = map[k];
+      } else if (/^AMMO_\d+$/.test(k)) ahOverrides[k] = map[k];
+      else priceMap[k] = map[k];
+    });
+    try { localStorage.setItem(storagePrefix + 'materialOverrides', JSON.stringify(overrides)); } catch (e) {}
+    try { localStorage.setItem(storagePrefix + 'ammoAHOverrides', JSON.stringify(ahOverrides)); } catch (e) {}
+    try { localStorage.setItem(storagePrefix + 'priceMap', JSON.stringify(priceMap)); } catch (e) {}
+    renderAll();
+    console.log('Loaded latest snapshot', choice);
+  } catch (e) { alert('Failed to parse snapshot: ' + e); }
+});
+
+const clearBtn = document.getElementById('clearBtn');
+if (clearBtn) clearBtn.addEventListener('click', () => {
+  if (!confirm('Clear stored overrides and dated snapshots?')) return;
+  const toRemove = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(k)) toRemove.push(k);
+  }
+  toRemove.forEach(k => localStorage.removeItem(k));
+  clearOverridesLocal();
+});
+// The import handler is attached inside DOMContentLoaded to avoid duplicate bindings.
+
+// Export current priceMap as a dated JSON file (array with one object)
+const exportBtn = document.getElementById('exportPricesBtn');
+if (exportBtn) exportBtn.addEventListener('click', () => {
+  const d = new Date();
+  const dateStr = String(d.getMonth()+1).padStart(2,'0') + '/' + String(d.getDate()).padStart(2,'0') + '/' + d.getFullYear();
+  const out = {};
+  const inner = {};
+    try {
+    // Collect material overrides from the table inputs (skip craftable materials)
+    document.querySelectorAll('.price-input').forEach(inp => {
+      const name = inp.getAttribute('data-name');
+      if (materialsCache[name] && materialsCache[name].recipe) return; // skip craftables
+      const v = inp.value.trim();
+      if (v !== '') inner[name] = Number(v);
+      else if (priceMap && priceMap[name] !== undefined) inner[name] = Number(priceMap[name]);
+      else inner[name] = 0;
+    });
+    // Collect ammo AH prices from table inputs
+    document.querySelectorAll('.ah-input').forEach(inp => {
+      const name = inp.getAttribute('data-ammo-name');
+      const v = inp.value.trim();
+      if (v !== '') inner[name] = Number(v);
+      else if (priceMap && priceMap[name] !== undefined) inner[name] = Number(priceMap[name]);
+      else inner[name] = 0;
+    });
+    // Ensure any MAT_/AMMO_ keys in priceMap are included even if no inputs exist (skip craftables)
+    Object.keys(priceMap || {}).forEach(k => {
+      if ((/^MAT_\d+$/.test(k) || /^AMMO_\d+$/.test(k)) && inner[k] === undefined) {
+        if (materialsCache[k] && materialsCache[k].recipe) return; // skip craftables
+        inner[k] = Number(priceMap[k]) || 0;
+      }
+    });
+  } catch (e) {
+    console.warn('Failed to collect prices for export', e);
+  }
+  // export the inner mapping directly (no date key), compact JSON
+  const payload = JSON.stringify(inner);
+  const filename = `prices-${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.json`;
+  // Try to copy to clipboard first; fallback to download if unavailable or rejected
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payload).then(() => {
+      alert('Prices copied to clipboard');
+    }).catch(() => {
+      // fallback download
+      const blob = new Blob([payload], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  } else {
+    const blob = new Blob([payload], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savePricesBtn = document.getElementById('savePricesBtn');
+    const importPricesBtn = document.getElementById('importPricesBtn');
+    const exportPricesBtn = document.getElementById('exportPricesBtn');
+
+    loadLocale().then(loadAll);
+
+    savePricesBtn.addEventListener('click', () => {
+        const pricesToSave = {};
+        document.querySelectorAll('.price-input').forEach(input => {
+          const name = input.getAttribute('data-name');
+          // don't save craftable materials; they are computed
+          if (materialsCache[name] && materialsCache[name].recipe) return;
+          const value = input.value || input.placeholder;
+          if (name && value) {
+            pricesToSave[name] = Number(value);
+          }
+        });
+        document.querySelectorAll('.ah-input').forEach(input => {
+            const name = input.getAttribute('data-ammo-name');
+            const value = input.value || input.placeholder;
+             if (name && value) {
+                pricesToSave[name] = Number(value);
+            }
+        });
+        
+        try {
+            localStorage.setItem(storagePrefix + 'priceMap', JSON.stringify(pricesToSave));
+            alert('Current prices have been saved to your browser storage.');
+        } catch (e) {
+            alert('Failed to save prices.');
+            console.error('LocalStorage error:', e);
+        }
+    });
+
+    importPricesBtn.addEventListener('click', () => {
+        const json = prompt('Paste your price map JSON here:');
+        if (!json) return;
+        try {
+            const data = JSON.parse(json);
+            // clear existing overrides before applying new ones
+            Object.keys(overrides).forEach(k => delete overrides[k]);
+            Object.keys(ahOverrides).forEach(k => delete ahOverrides[k]);
+            // remove craftable materials from imported map so computed values remain authoritative
+            Object.keys(data).forEach(k => { if (materialsCache[k] && materialsCache[k].recipe) delete data[k]; });
+            Object.assign(overrides, data);
+            Object.assign(ahOverrides, data);
+            renderAll();
+            alert('Prices imported.');
+        } catch (e) {
+            alert('Invalid JSON. Please check the format.');
+            console.error('JSON parse error:', e);
+        }
+    });
+
+    exportPricesBtn.addEventListener('click', () => {
+        const pricesToExport = {};
+      document.querySelectorAll('.price-input').forEach(input => {
+        const name = input.getAttribute('data-name');
+        // skip craftable materials
+        if (materialsCache[name] && materialsCache[name].recipe) return;
+        const value = input.value || input.placeholder;
+        if (name && value) {
+          pricesToExport[name] = Number(value);
+        }
+      });
+        document.querySelectorAll('.ah-input').forEach(input => {
+            const name = input.getAttribute('data-ammo-name');
+            const value = input.value || input.placeholder;
+             if (name && value) {
+                pricesToExport[name] = Number(value);
+            }
+        });
+
+        const jsonString = JSON.stringify(pricesToExport);
+        navigator.clipboard.writeText(jsonString).catch(err => {
+            alert('Failed to copy prices.');
+            console.error('Clipboard error:', err);
+        });
+    });
+});

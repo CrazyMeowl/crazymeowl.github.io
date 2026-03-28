@@ -1,50 +1,51 @@
 {
-  "AngleGrinder": {
-    "image": "AngleGrinder.png",
-    "price": 4241
+  "MAT_1": {
+    "name": "Angle Grinder",
+    "image": "AngleGrinder.png"
   },
-  "ElectricBreachingHammer": {
-    "image": "ElectricBreachingHammer.png",
-    "price": 4373
+  "MAT_2": {
+    "name": "Electric Demolition Hammer",
+    "image": "ElectricDemolitionHammer.png"
   },
-  "BasicFuel": {
-    "image": "BasicFuel.png",
-    "price": 17912
+  "MAT_3": {
+    "name": "Basic Fuel",
+    "image": "BasicFuel.png"
   },
-  "GunPowder": {
-    "image": "GunPowder.png",
-    "price": 24660
+  "MAT_4": {
+    "name": "Gunpowder",
+    "image": "GunPowder.png"
   },
-  "BasicAmmoProductionParts": {
-    "image": "BasicAmmoProductionParts.png",
-    "price": 28078
+  "MAT_5": {
+    "name": "Basic Ammo Production Parts",
+    "image": "BasicAmmoProductionParts.png"
   },
-  "HighPrecisionDigitalCaliper": {
-    "image": "HighPrecisionDigitalCaliper.png",
-    "price": 18028
+  "MAT_6": {
+    "name": "High Precision Digital Caliper",
+    "image": "HighPrecisionDigitalCaliper.png"
   },
-  "CordlessPortableDrill": {
-    "image": "CordlessPortableDrill.png",
-    "price": 36095
+  "MAT_7": {
+    "name": "Cordless Portable Drill",
+    "image": "CordlessPortableDrill.png"
   },
-  "SpinningHandSaw": {
-    "image": "SpinningHandSaw.png",
-    "price": 46908
+  "MAT_8": {
+    "name": "Spinning Hand Saw",
+    "image": "SpinningHandSaw.png"
   },
-  "Cutlass": {
-    "image": "Cutlass.png",
-    "price": 40687
+  "MAT_9": {
+    "name": "Cutlass",
+    "image": "Cutlass.png"
   },
-  "BoxedDripCoffee": {
-    "image": "BoxedDripCoffee.png",
-    "price": 363867
+  "MAT_10": {
+    "name": "Boxed Drip Coffee",
+    "image": "BoxedDripCoffee.png"
   },
-  "PremiumFuel": {
+  "MAT_11": {
+    "name": "Premium Fuel",
     "image": "PremiumFuel.png",
-    "recipe": [
-      { "name": "Cutlass", "qty": 1 },
-      { "name": "BoxedDripCoffee", "qty": 1 }
-    ],
+    "recipe": {
+      "MAT_9": 1,
+      "MAT_10": 1
+    },
     "output": 4
   }
 }

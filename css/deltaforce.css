@@ -5,10 +5,16 @@
 .qty-badge{font-size:0.9rem;color:#333}
 .thumb{width:50px;height:50px;object-fit:contain;border-radius:4px}
 .price-input{width:120px}
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0 }
+.price-input{-moz-appearance:textfield}
 .bigger_thumb{width:120px;height:120px;object-fit:contain;border-radius:4px}
 /* table helpers (kept from original simple table CSS)
    Bootstrap provides most table styling but keep these minimal fallbacks */
-table{width:100%;border-collapse:collapse;margin-top:14px}
-th,td{padding:10px;border:1px solid #e9e9e9;text-align:left}
-th{background:#fafafa}
+.deltaforce-table{width:100%;border-collapse:collapse;margin-top:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-radius:10px;overflow:hidden}
+.deltaforce-table th,.deltaforce-table td{padding:10px;border-bottom:1px solid #e9e9e9;text-align:left;background:white;vertical-align:middle}
+.deltaforce-table th{background:#fafafa}
+.deltaforce-table tr:hover td{background:#fbfdff}
+.deltaforce-table tr:nth-child(even) td{background:#ffffff}
+.deltaforce-table td:first-child{width:64px}
 .ammo-price{font-weight:700}

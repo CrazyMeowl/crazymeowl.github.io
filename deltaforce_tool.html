@@ -17,9 +17,9 @@
         <p class="mt-3" data-i18n="instructions"> Look up the price of each item in the game's auction house and enter it below to calculate
           profitability.</p>
         <div class="mt-3">
-          <button id="saveBtn" class="btn btn-primary me-2" data-i18n="save">Save overrides (local)</button>
-          <button id="loadBtn" class="btn btn-secondary me-2" data-i18n="load">Load overrides (local)</button>
-          <button id="clearBtn" class="btn btn-danger" data-i18n="clear">Clear overrides</button>
+          <button id="savePricesBtn" class="btn btn-primary me-2" title="Save all current prices to browser storage">Save Prices</button>
+          <button id="importPricesBtn" class="btn btn-outline-secondary me-2" title="Paste a price-map JSON and save it to localStorage">Import prices</button>
+          <button id="exportPricesBtn" class="btn btn-outline-secondary" title="Download the currently loaded price map as JSON">Export prices</button>
         </div>
       </div>
       <div class="ms-auto">
@@ -27,8 +27,8 @@
       </div>
     </div>
     <!-- Materials Table -->
-    <h1 data-i18n="title">Materials</h1>
-    <table id="materialsTable" class="table table-sm table-striped">
+    <h1 data-i18n="material_heading">Materials</h1>
+    <table id="materialsTable" class="table table-sm table-striped deltaforce-table">
       <thead>
         <tr>
           <th data-i18n="th_image">Image</th>
@@ -41,7 +41,7 @@
     </table>
     <!-- Ammo Table -->
     <h2 data-i18n="ammo_heading">Ammo</h2>
-    <table id="ammoTable" class="table table-sm table-striped">
+    <table id="ammoTable" class="table table-sm table-striped deltaforce-table">
       <thead>
         <tr>
           <th data-i18n="th_image">Image</th>

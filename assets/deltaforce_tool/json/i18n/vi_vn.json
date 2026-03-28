@@ -1,9 +1,10 @@
 {
   "title": "Máy Tinh Vật Liệu và Đạn Delta Force",
-  "materials_lead": "Hiển thị mọi nguyên liệu trong thư mục assets/material.",
+  "materials_lead": "Một công cụ giúp người chơi Delta Force theo dõi vật liệu và khả năng sinh lời của đạn.",
   "save": "Lưu ghi đè (cục bộ)",
   "load": "Tải ghi đè (cục bộ)",
   "clear": "Xóa ghi đè",
+  "material_heading": "Vật liệu",
   "ammo_heading": "Đạn",
   "th_image": "Hình",
   "th_name": "Tên",
@@ -18,5 +19,16 @@
   "th_rank": "Xếp hạng",
   "failed_load_json": "Không thể tải dữ liệu JSON — đã kiểm tra: %s",
   "note_warning": "Lưu ý: Công cụ này đang trong quá trình phát triển và có thể không hoàn toàn chính xác. Sử dụng cẩn thận.",
-  "instructions": "Tra cứu giá của từng mục trong chợ đấu giá của trò chơi và nhập phía dưới để tính lợi nhuận."
+  "instructions": "Tra cứu giá của từng mục trong chợ đấu giá của trò chơi và nhập phía dưới để tính lợi nhuận.",
+  "MAT_1": "Máy Mài Góc",
+  "MAT_2": "Búa Phá Tường",
+  "MAT_3": "Nhiên Liệu Thường",
+  "MAT_4": "Thuốc Súng",
+  "MAT_5": "Nguyên Liệu Đạn Dược Sơ Cấp",
+  "MAT_6": "Thước Cặp Điện Tử",
+  "MAT_7": "Khoan Điện Không Dây",
+  "MAT_8": "Lưỡi Cưa Gỗ",
+  "MAT_9": "Dao Găm",
+  "MAT_10": "Cà Phê Túi Lọc",
+  "MAT_11": "Nguyên liệu cao cấp"
 }

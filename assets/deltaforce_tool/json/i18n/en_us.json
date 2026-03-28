@@ -1,9 +1,10 @@
 {
   "title": "Delta Force Materials & Ammo Tool",
-  "materials_lead": "Displays every material found in assets/material.",
+  "materials_lead": "A tool to help Delta Force players track materials and ammo profitability.",
   "save": "Save overrides (local)",
   "load": "Load overrides (local)",
   "clear": "Clear overrides",
+  "material_heading": "Materials",
   "ammo_heading": "Ammo",
   "th_image": "Image",
   "th_name": "Name",
@@ -18,5 +19,16 @@
   "th_rank": "Rank",
   "failed_load_json": "Failed to load JSON data — checked: %s",
   "note_warning": "Note: This tool is a work in progress and may not be fully accurate. Use at your own risk.",
-  "instructions": "Look up the price of each item in the game's auction house and enter it below to calculate profitability."
+  "instructions": "Look up the price of each item in the game's auction house and enter it below to calculate profitability.",
+  "MAT_1": "Angle Grinder",
+  "MAT_2": "Electric Demolition Hammer",
+  "MAT_3": "Basic Fuel",
+  "MAT_4": "Gunpowder",
+  "MAT_5": "Basic Ammo Production Parts",
+  "MAT_6": "High Precision Digital Caliper",
+  "MAT_7": "Cordless Portable Drill",
+  "MAT_8": "Spinning Hand Saw",
+  "MAT_9": "Cutlass",
+  "MAT_10": "Boxed Drip Coffee",
+  "MAT_11": "Premium Fuel"
 }
