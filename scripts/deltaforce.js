@@ -319,7 +319,7 @@ function renderMaterials(materials) {
       tr.innerHTML = `
         <td>${img ? `<img class="thumb" src="${img}" alt="${displayName}"/>` : ''}</td>
         <td data-i18n="${name}">${displayName}</td>
-        <td><input type="number" step="1" min="0" data-name="${name}" class="price-input" placeholder="${placeholder}" value="" ${disabledAttr}></td>
+        <td><input type="number" step="1" min="0" data-name="${name}" class="price-input  form-control" placeholder="${placeholder}" value="" ${disabledAttr}></td>
         <td class="recipe-cell" data-recipe='${recipeJsonAttr}'>${recipeHtml}</td>
       `;
 
@@ -390,7 +390,7 @@ function renderAmmo(materials, ammo) {
         <td class="recipe-cell" data-recipe='${recipeJsonAttr}'>${recipeHtml}</td>
         <td class="qty-cell" data-name="${name}">${outputQty}</td>
         <td class="craft-price" data-name="${name}">${priceLabel}</td>
-        <td><input type="number" step="1" min="0" class="ah-input" data-ammo-name="${name}" placeholder="0" value="0"></td>
+        <td><input type="number" step="1" min="0" class="ah-input form-control" data-ammo-name="${name}" placeholder="0" value="0"></td>
         <td class="ah-qty-price" data-name="${name}">${computeAHQty(perUnitPrice, outputQty, name, item)}</td>
         <td class="profit-8" data-name="${name}"></td>
         <td class="profit-24" data-name="${name}"></td>
